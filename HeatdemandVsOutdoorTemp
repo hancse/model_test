@@ -1,4 +1,4 @@
-%%
+%% The file need to be used tohether with Simulink house model 
 
 Temp=[-10:1:24];                                                                                   % Define temperature range                                  
 Temp=(Temp)';                                                                                      % Change from row to colum
