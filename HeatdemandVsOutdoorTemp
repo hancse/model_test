@@ -1,0 +1,28 @@
+%%
+
+Temp=[-10:1:24];                                                                                   % Define temperature range                                  
+Temp=(Temp)';                                                                                      % Change from row to colum
+Heating=zeros(length(Temp),1);                                                                     % Define an empty vector             
+k=0;
+
+for i=Temp(1,:):Temp(end,:)                                                                        % Loop from the 1st to the last temperature value
+    
+    k=k+1;
+    EnergyDemand=[Toutside.signals.values (Heatingout1.signals.values)];    
+    A=zeros(length(EnergyDemand),1);
+    
+   for n =1: length(EnergyDemand)                                                               %Check all row of Energy demand
+        if EnergyDemand(n,1)  <= i && EnergyDemand(n,1)  >= (i-1)
+            
+                    A(n,1)=  EnergyDemand(n,2);
+        end
+    end
+B=sum(A)*3600; 
+Heating(k,1)=B;           
+end
+
+plot(Temp,Heating);
+title('Heating Energy demand verus outdoor temperature')
+ylabel('Heating power [kwh]')
+xlabel('Toutside[c]')
+grid
